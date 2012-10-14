@@ -5,28 +5,27 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import net.herranzmartin.project977r.model.TblConsultaSQL;
 import net.herranzmartin.project977r.model.TblCucCif;
 
-public class ConsultasService {
+public class ClientesService {
 	
 	private EntityManager em;
 	
-	public ConsultasService(EntityManager em){
+	public ClientesService(EntityManager em){
 		this.em = em;
 	}
 	
 	
 	@SuppressWarnings("unchecked")
-	public List<TblConsultaSQL> getAllItems(){
+	public List<TblCucCif> getAllItems(){
 		
-		List<TblConsultaSQL> lista = null;
+		List<TblCucCif> lista = null;
 		
 	    em.getTransaction().begin();
 	    
 	    
-	    Query query = em.createQuery("SELECT t FROM TblConsultaSQL t");
-	    lista = (List<TblConsultaSQL>)query.getResultList();
+	    Query query = em.createQuery("SELECT t FROM TblCucCif t");
+	    lista = (List<TblCucCif>)query.getResultList();
 	    
 	    em.getTransaction().commit();
 	    em.close();
@@ -34,10 +33,10 @@ public class ConsultasService {
 	    return lista;
 	}
 	
-	public boolean save(TblConsultaSQL obj){
+	public boolean save(TblCucCif cliente){
 	    em.getTransaction().begin();
 	    
-	    em.merge(obj);
+	    em.merge(cliente);
 	    
 	    em.getTransaction().commit();
 	    em.close();

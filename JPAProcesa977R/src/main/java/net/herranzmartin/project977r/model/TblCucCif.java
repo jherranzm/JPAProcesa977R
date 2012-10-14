@@ -73,4 +73,27 @@ public class TblCucCif implements Serializable {
 		this.tipoDoc = tipoDoc;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("TblCucCif [id=");
+		builder.append(id);
+		builder.append(", cuc=");
+		builder.append(cuc);
+		builder.append(", tipoDoc=");
+		builder.append(tipoDoc);
+		builder.append(", cif=");
+		builder.append(cif);
+		builder.append(", nombreCliente=");
+		builder.append(nombreCliente);
+		builder.append("]");
+		return builder.toString();
+	}
+	
+	
+	
+
 }
