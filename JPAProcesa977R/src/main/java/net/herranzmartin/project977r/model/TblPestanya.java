@@ -74,5 +74,27 @@ public class TblPestanya implements Serializable {
 	public void setTblConsultasSql(TblConsultaSQL tblConsultasSql) {
 		this.tblConsultasSql = tblConsultasSql;
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("TblPestanya [id=");
+		builder.append(id);
+		builder.append(", nombre=");
+		builder.append(nombre);
+		builder.append(", numFilaInicial=");
+		builder.append(numFilaInicial);
+		builder.append(", rango=");
+		builder.append(rango);
+		builder.append(", tblConsultasSql=");
+		builder.append(tblConsultasSql);
+		builder.append("]");
+		return builder.toString();
+	}
+	
+	
 	
 }
