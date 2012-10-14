@@ -47,4 +47,28 @@ public class ConsultasService {
 	}
 
 
+	@SuppressWarnings("unchecked")
+	public List<TblConsultaSQL> findByName(String texto) {
+		if(texto == null || texto.equals("")) return getAllItems();
+		
+		List<TblConsultaSQL> lista = null;
+		
+	    em.getTransaction().begin();
+	    
+	    StringBuilder sb = new StringBuilder();
+	    sb.append("SELECT t FROM TblConsultaSQL t ")
+	    	.append(" WHERE LOWER(t.nombre) LIKE :nom ")
+	    	.append(" OR LOWER(t.definicion) LIKE :def");
+	    Query query = em.createQuery(sb.toString());
+	    query.setParameter("nom", "%" + texto.toLowerCase() + "%");
+	    query.setParameter("def", "%" + texto.toLowerCase() + "%");
+
+	    lista = (List<TblConsultaSQL>)query.getResultList();
+	    
+	    em.getTransaction().commit();
+	    
+	    return lista;
+	}
+
+
 }

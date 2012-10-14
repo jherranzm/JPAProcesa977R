@@ -28,7 +28,25 @@ public class ClientesService {
 	    lista = (List<TblCucCif>)query.getResultList();
 	    
 	    em.getTransaction().commit();
-	    em.close();
+	    
+	    return lista;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<TblCucCif> findByName(String str){
+		
+		if(str == null || str.equals("")) return getAllItems();
+		
+		List<TblCucCif> lista = null;
+		
+	    em.getTransaction().begin();
+	    
+	    Query query = em.createQuery("SELECT t FROM TblCucCif t WHERE LOWER(t.nombreCliente) LIKE :name");
+	    query.setParameter("name", "%" + str.toLowerCase() + "%");
+
+	    lista = (List<TblCucCif>)query.getResultList();
+	    
+	    em.getTransaction().commit();
 	    
 	    return lista;
 	}
@@ -39,7 +57,6 @@ public class ClientesService {
 	    em.merge(cliente);
 	    
 	    em.getTransaction().commit();
-	    em.close();
 	    
 	    return true;
 		
